@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Tostelería - Home</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rustic-nav py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-title">La Tostelería</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+          <li class="nav-item"><a class="nav-link" href="acerca-de.html">Acerca de</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero container mt-4">
+    <!-- Bootstrap carousel -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-3 shadow-sm">
+        <div class="carousel-item active">
+          <img src="assets/img/pan-elote.jpg" class="d-block w-100" alt="Pan de elote">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Pan de elote</h5>
+            <p>Recetas tradicionales con ingredientes locales.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/tostadas-canela.jpg" class="d-block w-100" alt="Tostadas de canela">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Tostadas de canela</h5>
+            <p>Crujientes y con aroma de hogar.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <div class="intro mt-4 p-3 bg-beige rounded-3 shadow-sm">
+      <h2 class="display-6">Bienvenidos a La Tostelería</h2>
+      <p class="lead">Somos un emprendimiento familiar que rescata recetas tradicionales de panadería y tostelería. Ingredientes honestos, horno de leña y mucho cariño.</p>
+      <p><a href="galeria.html" class="btn btn-rustic">Ver productos</a></p>
+    </div>
+  </section>
+
+  <section class="mapa container mt-4 mb-5">
+    <h3 class="mb-3">Encuéntranos</h3>
+    <div id="map" class="rounded-3 shadow" style="height:320px"></div>
+  </section>
+</main>
+
+<footer class="bg-dark text-beige py-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div>&copy; 2025 La Tostelería. Todos los derechos reservados.</div>
+    <div class="social-links">
+      <a href="#" class="text-beige me-3">Facebook</a>
+      <a href="#" class="text-beige me-3">Instagram</a>
+      <a href="#" class="text-beige">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/mapa.js"></script>
+<!-- Google Maps API: replace YOUR_API_KEY with a real key -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

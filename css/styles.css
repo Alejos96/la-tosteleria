@@ -1,0 +1,57 @@
+/* Mobile-first rustic styles for La Tostelería */
+:root{
+  --brown:#8B4513;
+  --beige:#F5F5DC;
+  --offwhite:#FAEBD7;
+  --text:#3b2f2f;
+}
+body{
+  font-family: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color:var(--text);
+  background:var(--offwhite);
+}
+.brand-title{
+  font-family: 'Playfair Display', serif;
+  font-size:1.4rem;
+  color:var(--brown);
+}
+.rustic-nav .nav-link{
+  color:var(--brown);
+  transition: all .15s ease-in-out;
+}
+.rustic-nav .nav-link:hover{
+  color:#5a2f12;
+  transform: translateY(-2px);
+}
+.bg-beige{background:var(--beige)}
+.text-beige{color:var(--beige)}
+.btn-rustic{
+  background:var(--brown);
+  color:var(--offwhite);
+  border-radius:12px;
+  padding: .5rem 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,.08);
+}
+.btn-rustic:hover{opacity:.95}
+/* Cards */
+.card-rustic{
+  border:0;
+  border-radius:12px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(245,245,220,0.9), rgba(255,255,255,0.6));
+}
+.card-rustic img{height:180px;object-fit:cover}
+/* Responsive tweaks */
+@media(min-width:768px){
+  .hero .carousel-caption{right:10%;left:10%;}
+}
+/* subtle shadows */
+.shadow-sm{box-shadow:0 6px 18px rgba(0,0,0,.06)}
+
+/* form invalid */
+.was-validated .form-control:invalid{border-color:#dc3545}
+
+/* small utilities */
+.mt-4{margin-top:1.5rem!important}
+.mb-3{margin-bottom:1rem!important}
+.p-3{padding:1rem!important}

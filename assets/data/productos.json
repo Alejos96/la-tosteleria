@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Pan de elote",
+    "descripcion": "Pan tradicional hecho con elote fresco.",
+    "imagen": "assets/img/pan-elote.jpg",
+    "precio": "Q15.00"
+  },
+  {
+    "id": 2,
+    "nombre": "Tostadas de canela",
+    "descripcion": "Crujientes tostadas con canela y azúcar.",
+    "imagen": "assets/img/tostadas-canela.jpg",
+    "precio": "Q20.00"
+  }
+]
