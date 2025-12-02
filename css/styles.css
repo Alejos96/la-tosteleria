@@ -15,13 +15,30 @@ body{
   font-size:1.4rem;
   color:var(--brown);
 }
-.rustic-nav .nav-link{
-  color:var(--brown);
-  transition: all .15s ease-in-out;
+.rustic-nav{
+  background-color:#7C1006!important;
+  min-height:80px;
 }
-.rustic-nav .nav-link:hover{
-  color:#5a2f12;
+.rustic-nav .navbar-brand img{
+  height:70px;
+  width:auto;
+  object-fit:contain;
+}
+.rustic-nav .nav-link{
+  color:#DCAF7C!important;
+  transition: all .15s ease-in-out;
+  font-weight:500;
+}
+.rustic-nav .nav-link:hover,
+.rustic-nav .nav-link.active{
+  color:#FFF!important;
   transform: translateY(-2px);
+}
+.navbar-toggler{
+  border-color:#DCAF7C;
+}
+.navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23DCAF7C' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .bg-beige{background:var(--beige)}
 .text-beige{color:var(--beige)}
@@ -55,3 +72,34 @@ body{
 .mt-4{margin-top:1.5rem!important}
 .mb-3{margin-bottom:1rem!important}
 .p-3{padding:1rem!important}
+
+/* Footer styling */
+footer h6{
+  font-family: 'Playfair Display', serif;
+  color:var(--beige);
+  font-weight:700;
+  margin-bottom:.5rem;
+}
+footer .small{
+  font-size:.875rem;
+  line-height:1.4;
+}
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* Video decorativo */
+.video-decorativo video{
+  border:3px solid var(--brown);
+}
+
+/* Carousel images */
+.carousel-item img{
+  height:400px;
+  object-fit:cover;
+}
+@media(max-width:768px){
+  .carousel-item img{
+    height:250px;
+  }
+}

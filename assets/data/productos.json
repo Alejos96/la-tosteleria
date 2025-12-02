@@ -1,16 +1,44 @@
 [
   {
     "id": 1,
-    "nombre": "Pan de elote",
-    "descripcion": "Pan tradicional hecho con elote fresco.",
-    "imagen": "assets/img/pan-elote.jpg",
-    "precio": "Q15.00"
+    "nombre": "Suspiros",
+    "descripcion": "Delicados suspiros artesanales elaborados con clara de huevo y azúcar. Producto crujiente, sin grasa y de textura ligera.",
+    "imagen": "assets/img/suspiros.jpg",
+    "precio": "₡550"
   },
   {
     "id": 2,
-    "nombre": "Tostadas de canela",
-    "descripcion": "Crujientes tostadas con canela y azúcar.",
-    "imagen": "assets/img/tostadas-canela.jpg",
-    "precio": "Q20.00"
+    "nombre": "Suspiros con coco",
+    "descripcion": "Producto seco elaborado a base de clara de huevo, azúcar y coco deshidratado. Producto crujiente, ligero y con sabor a coco.",
+    "imagen": "assets/img/suspiros-coco.jpg",
+    "precio": "₡1000"
+  },
+  {
+    "id": 3,
+    "nombre": "Galletas con chips de chocolate",
+    "descripcion": "Galleta horneada elaborada con harinas de trigo e integral, avena y chips de chocolate. Producto de textura firme y sabor dulce.",
+    "imagen": "assets/img/galletachips1.jpeg",
+    "precio": "₡950"
+  },
+  {
+    "id": 4,
+    "nombre": "Galletas con semillas de macadamia",
+    "descripcion": "Galleta horneada elaborada con harinas enriquecidas, avena y semillas de macadamia, con cobertura sabor a chocolate blanco. Producto con sabor dulce y notas cremosas.",
+    "imagen": "assets/img/galletasconsemillasdemacadamia.jpeg",
+    "precio": "₡1450"
+  },
+  {
+    "id": 5,
+    "nombre": "Galletas con queso",
+    "descripcion": "Galleta horneada de harinas enriquecidas e integral, margarina y queso semiduro. Producto de sabor salado y fuente moderada de proteína. Elaborado sin azúcares añadidos.",
+    "imagen": "assets/img/galletaqueso1.jpeg",
+    "precio": "₡870"
+  },
+  {
+    "id": 6,
+    "nombre": "Besitos de dulce de leche",
+    "descripcion": "Descripcion de los besitos",
+    "imagen": "assets/img/besitosdulcedeleche1.jpeg",
+    "precio": "₡870"
   }
 ]

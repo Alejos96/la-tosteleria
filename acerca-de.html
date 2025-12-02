@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light rustic-nav py-3">
+  <nav class="navbar navbar-expand-lg navbar-dark rustic-nav py-2">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><span class="brand-title">La Tostelería</span></a>
+      <a class="navbar-brand" href="index.html"><img src="assets/img/LogoLaTosteleria.jpeg" alt="La Tostelería"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,17 +27,31 @@
   </nav>
 
   <main class="container mt-4">
-    <h1>Nuestra Historia</h1>
-    <p>La Tostelería nació como un proyecto familiar inspirado en las panaderías de antaño. Conservamos recetas tradicionales y técnicas artesanales.</p>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Nuestra Historia</h1>
+        <p>La Tostelería nació como un proyecto familiar inspirado en las panaderías de antaño. Conservamos recetas tradicionales y técnicas artesanales.</p>
 
-    <div class="row mt-4">
-      <div class="col-md-6">
-        <h3>Misión</h3>
-        <p>Ofrecer productos de panadería y tostelería con sabor auténtico, hechos con ingredientes locales y procesos responsables.</p>
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <h3>Misión</h3>
+            <p>Ofrecer productos de panadería y tostelería con sabor auténtico, hechos con ingredientes locales y procesos responsables.</p>
+          </div>
+          <div class="col-md-6">
+            <h3>Visión</h3>
+            <p>Ser reconocidos por la calidad y por mantener vivas las tradiciones culinarias de la región.</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <h3>Visión</h3>
-        <p>Ser reconocidos por la calidad y por mantener vivas las tradiciones culinarias de la región.</p>
+      
+      <div class="col-md-4">
+        <!-- Video decorativo en loop con relación vertical -->
+        <div class="video-decorativo sticky-top" style="top:20px;">
+          <video autoplay loop muted playsinline class="w-100 rounded-3 shadow-sm" style="height:500px;object-fit:cover;">
+            <source src="assets/videos/videogalletaschips.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
       </div>
     </div>
 
@@ -50,10 +64,23 @@
     </div>
   </main>
 
-  <footer class="bg-dark text-beige py-3 mt-4">
-    <div class="container d-flex justify-content-between">
-      <div>&copy; 2025 La Tostelería</div>
-      <div><a href="index.html" class="text-beige">Volver</a></div>
+  <footer class="bg-dark text-beige py-4 mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h6>La Tostelería</h6>
+          <p class="small mb-0">&copy; 2025 Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0 text-center">
+          <a href="index.html" class="btn btn-sm btn-outline-light">Volver al Inicio</a>
+        </div>
+        <div class="col-md-4">
+          <h6>Desarrollado por</h6>
+          <p class="small mb-0">Manuel Alejandro Soto Rojas</p>
+          <p class="small mb-0">Cédula: 116620142</p>
+          <p class="small mb-0">Correo: <a href="mailto:msotor@est.utn.ac.cr" class="text-beige">msotor@est.utn.ac.cr</a></p>
+        </div>
+      </div>
     </div>
   </footer>
 

@@ -22,8 +22,8 @@ function loadProducts(){
       renderProducts(data);
     })
     .fail(function(err){
-      $('#gallery').html('<div class="col-12">Error cargando productos.</div>');
-      console.error('Error cargando JSON', err);
+      console.error('Error loading products:', err);
+      $('#gallery').html('<div class="alert alert-warning">No se pudieron cargar los productos.</div>');
     });
 }
 
@@ -32,16 +32,13 @@ function renderProducts(products){
   $gallery.empty();
   products.forEach(function(p){
     const card = `
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card card-rustic">
+      <div class="col">
+        <div class="card card-rustic h-100">
           <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}">
           <div class="card-body">
             <h5 class="card-title">${p.nombre}</h5>
             <p class="card-text">${p.descripcion}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="text-muted">${p.precio}</span>
-              <button class="btn btn-sm btn-rustic">Pedir</button>
-            </div>
+            <p class="fw-bold text-brown">${p.precio}</p>
           </div>
         </div>
       </div>
