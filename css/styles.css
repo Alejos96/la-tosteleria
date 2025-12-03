@@ -103,3 +103,59 @@ footer a:hover{
     height:250px;
   }
 }
+
+/* Audio player fixed floating button */
+.audio-player-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(124, 16, 6, 0.95);
+  padding: 12px 18px;
+  border-radius: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.audio-player-fixed:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.audio-player-fixed button {
+  background: transparent;
+  border: none;
+  color: #DCAF7C;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.audio-player-fixed button:hover {
+  color: #FFF;
+}
+
+#audioIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* Responsive para móviles */
+@media(max-width: 576px){
+  .audio-player-fixed {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 14px;
+  }
+  .audio-player-fixed button {
+    font-size: 12px;
+  }
+  #audioIcon {
+    font-size: 20px;
+  }
+}
