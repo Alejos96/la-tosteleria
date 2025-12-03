@@ -1,0 +1,560 @@
+# La Tostelería — Documentación Técnica del Proyecto
+
+**Autor:** Manuel Alejandro Soto Rojas  
+**Cédula:** 116620142  
+**Correo:** msotor@est.utn.ac.cr  
+**Curso:** ISW-512 Diseño de Aplicaciones Web  
+**Fecha:** Diciembre 2025  
+**Emprendimiento:** La Tostelería (Productos de repostería artesanal)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+/la-tosteleria
+├── index.html              # Página principal con carrusel y mapa
+├── galeria.html            # Galería de productos (consume JSON)
+├── contacto.html           # Formulario con validaciones
+├── acerca-de.html          # Historia y video decorativo
+├── css/
+│   └── styles.css          # Estilos personalizados Mobile-First
+├── js/
+│   ├── script.js           # jQuery para galería y efectos
+│   ├── mapa.js             # Google Maps API
+│   └── validaciones.js     # Validaciones del formulario
+├── assets/
+│   ├── img/                # Imágenes del sitio
+│   ├── videos/             # Video decorativo
+│   └── data/
+│       └── productos.json  # Datos de productos
+└── README.md               # Este documento
+```
+
+---
+
+## 🔧 Implementaciones Técnicas Aplicadas
+
+### 1. **JavaScript Puro (Vanilla JS)**
+
+#### **Archivo: `js/validaciones.js` (Página: `contacto.html`)**
+- **Líneas 4-62**: Validación completa del formulario de contacto
+- **Funcionalidades:**
+  - Validación de formato de email con expresión regular (línea 67-70)
+  - Cálculo automático de edad desde fecha de nacimiento (línea 72-81)
+  - Actualización en tiempo real de edad visible (línea 23-26)
+  - Actualización dinámica del rango de ingreso con etiquetas textuales (línea 14-19)
+  - Validación en tiempo real de campos obligatorios (línea 38-51)
+  - Mensajes de error dinámicos con clases Bootstrap (línea 53-56)
+  - Almacenamiento de edad en campo oculto y visible (línea 10-11)
+
+**Ejemplo de código:**
+```javascript
+function calcularEdad(fechaString){
+  if(!fechaString) return '';
+  const hoy = new Date();
+  const nacimiento = new Date(fechaString);
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+  const m = hoy.getMonth() - nacimiento.getMonth();
+  if(m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())){
+    edad--;
+  }
+  return edad;
+}
+```
+
+#### **Archivo: `js/mapa.js` (Página: `index.html`)**
+- **Líneas 1-72**: Inicialización y funcionalidades avanzadas de Google Maps API
+- **Funcionalidades:**
+  - Creación de mapa interactivo con coordenadas específicas: 10.027863216519693, -84.20398087273193 (línea 6-11)
+  - Marcador personalizado con título "La Tostelería" (línea 13-17)
+  - InfoWindow con información del negocio (línea 19-23)
+  - **DirectionsService y DirectionsRenderer** para cálculo de rutas (línea 2-4)
+  - **Función `calcularRuta()`** (línea 26-55):
+    - Geolocalización del usuario con `navigator.geolocation`
+    - Solicitud de ruta desde ubicación actual
+    - Trazado de ruta en el mapa
+    - Habilitación del botón "Ir" después de calcular
+  - **Función `iniciarNavegacion()`** (línea 57-72):
+    - Detección de tipo de dispositivo (móvil vs desktop)
+    - Apertura de Google Maps con navegación en dispositivos móviles
+    - Apertura de Google Maps web en desktop
+    - URL con coordenadas de destino
+
+---
+
+### 2. **jQuery - Manipulación del DOM**
+
+#### **Archivo: `js/script.js` (Página: `galeria.html`)**
+- **Líneas 6-12**: Efectos hover en enlaces de navegación
+  ```javascript
+  $('.nav-link').hover(function(){
+    $(this).addClass('shadow-sm');
+  }, function(){
+    $(this).removeClass('shadow-sm');
+  });
+  ```
+
+- **Líneas 14-17**: Detección de página y carga condicional
+  ```javascript
+  if($('#gallery').length){
+    loadProducts();
+  }
+  ```
+
+- **Líneas 20-28**: Consumo de API JSON local con manejo de errores
+  ```javascript
+  $.getJSON('assets/data/productos.json')
+    .done(function(data){
+      renderProducts(data);
+    })
+    .fail(function(err){
+      $('#gallery').html('<div class="col-12">Error cargando productos.</div>');
+      console.error('Error cargando JSON', err);
+    });
+  ```
+
+- **Líneas 31-50**: Renderizado dinámico de productos
+  - Uso de `forEach()` para iterar datos
+  - Template literals (`) para HTML dinámico
+  - Inserción de contenido con `.append()`
+
+---
+
+### 3. **Consumo de JSON como API REST Local**
+
+#### **Archivo: `assets/data/productos.json`**
+Estructura de datos:
+```json
+[
+  {
+    "id": 1,
+    "nombre": "Pan de elote",
+    "descripcion": "Pan tradicional hecho con elote fresco.",
+    "imagen": "assets/img/pan-elote.jpg",
+    "precio": "Q15.00"
+  }
+]
+```
+
+**Implementación en `galeria.html`:**
+- Consumo mediante `$.getJSON()` (jQuery AJAX)
+- Renderizado dinámico de tarjetas Bootstrap
+- Manejo de errores con `.fail()`
+- Actualización del DOM sin recargar la página
+
+**Ubicación:** Página `galeria.html`, función `loadProducts()` en `js/script.js` (línea 20)
+
+---
+
+### 4. **Bootstrap 5 Framework**
+
+#### **Componentes Implementados:**
+
+1. **Sistema de Grid Responsivo**
+   - 12 columnas adaptativas (`col-12`, `col-sm-6`, `col-md-4`)
+   - Breakpoints: móvil, tablet, desktop
+
+2. **Navbar Responsivo** (Todas las páginas)
+   - Colapsa en móviles (`navbar-expand-lg`)
+   - Botón hamburguesa automático
+   - Logo adaptativo (50px altura)
+
+3. **Carrusel (Carousel)** - `index.html`
+   - 4 slides con imágenes de productos
+   - Autoplay activado (`data-bs-ride="carousel"`)
+   - Controles prev/next
+   - Captions responsivos (ocultos en móvil con `d-none d-md-block`)
+
+4. **Cards** - `galeria.html`
+   - Diseño responsivo con clase `card`
+   - Imágenes con altura fija (180px)
+   - Botones de acción
+
+4. **Formulario Completo** - `contacto.html`
+   - **Email** con validación de formato (tipo `email`)
+   - **Nombre completo** (tipo `text`, obligatorio)
+   - **Fecha de nacimiento** (tipo `date`)
+   - **Edad calculada** (visible, tipo `number`, readonly)
+   - **Edad oculta** (tipo `hidden`)
+   - **Rango de ingreso** (tipo `range`, 1-5 con etiquetas: Bajo, Medio Bajo, Medio, Medio Alto, Alto)
+   - **Género** (radio buttons, selección única)
+   - **Grado académico** (checkboxes, selección múltiple)
+   - **Mensaje personal** (textarea, rows="5")
+   - Clases Bootstrap: `.form-control`, `.form-label`, `.invalid-feedback`
+   - Validaciones en tiempo real con JavaScript
+
+---
+
+### 5. **HTML5 Multimedia**
+
+#### **Video HTML5 - `acerca-de.html`**
+```html
+<video autoplay loop muted playsinline class="w-100 rounded-3 shadow-sm">
+  <source src="assets/videos/videogalletaschips.mp4" type="video/mp4">
+</video>
+```
+
+**Atributos implementados:**
+- `autoplay`: Inicia automáticamente
+- `loop`: Reproducción continua
+- `muted`: Sin sonido (decorativo)
+- `playsinline`: Compatible con iOS
+- Estilos: Ancho completo, bordes redondeados, sombra
+
+**Ubicación:** Columna derecha de `acerca-de.html`, posición sticky para scroll vertical
+
+---
+
+### 6. **Google Maps API con Geolocalización y Routing**
+
+#### **Implementación en `index.html`**
+```html
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIIxIdUvWjqSsIXYBr_Zl4S3PpDf9ohXE&callback=initMap"></script>
+```
+
+**Funcionalidades Implementadas:**
+- **Mapa centrado** en coordenadas específicas del negocio: `10.027863216519693, -84.20398087273193`
+- **Marcador personalizado** con título "La Tostelería"
+- **InfoWindow** con información de contacto
+- **Botón "Cómo llegar"**: 
+  - Solicita permiso de geolocalización del usuario
+  - Calcula ruta óptima desde ubicación actual
+  - Dibuja la ruta en el mapa usando DirectionsRenderer
+  - Habilita el botón "Ir" después de calcular
+- **Botón "Ir"**:
+  - Detecta si el dispositivo es móvil o desktop
+  - Abre aplicación nativa de Maps en móviles
+  - Abre Google Maps web en desktop
+  - URL con coordenadas de destino pre-cargadas
+- **Controles del mapa:** Zoom y navegación habilitados
+- **Nivel de zoom:** 15 (vista detallada)
+
+**Ubicación:** Sección con id `#mapa` en `index.html`, lógica completa en `js/mapa.js` (72 líneas)
+
+---
+
+### 7. **Diseño Responsivo Mobile-First**
+
+#### **CSS Custom - `css/styles.css`**
+
+**Variables CSS:**
+```css
+:root{
+  --brown:#8B4513;
+  --beige:#F5F5DC;
+  --offwhite:#FAEBD7;
+  --text:#3b2f2f;
+}
+```
+
+**Media Queries:**
+```css
+@media(min-width:768px){
+  .hero .carousel-caption{right:10%;left:10%;}
+}
+```
+
+**Estrategia Mobile-First:**
+1. Estilos base para móviles (sin media query)
+2. Media queries para pantallas mayores
+3. Grid de Bootstrap con breakpoints
+4. Imágenes fluidas (`w-100`)
+5. Tipografías escalables (rem)
+
+---
+
+### 8. **Paleta de Colores y Tipografía**
+
+#### **Google Fonts:**
+- **Títulos:** Playfair Display (serif, peso 400/700)
+- **Cuerpo:** Open Sans (sans-serif, peso 300/400/600)
+
+#### **Colores:**
+- **Navbar:** `#7C1006` (marrón oscuro/vino)
+- **Enlaces navbar:** `#DCAF7C` (dorado/beige claro)
+- Marrón primario: `#8B4513` (identidad rústica)
+- Beige: `#F5F5DC` (fondos suaves)
+- Blanco roto: `#FAEBD7` (fondo body)
+- Texto: `#3b2f2f` (legibilidad)
+- Footer: `bg-dark` con texto `text-beige`
+
+---
+
+## 🎨 Características de Diseño
+
+1. **Navbar Personalizado con Logo:**
+   - Logo `LogoLaTosteleria.jpeg` en todas las páginas
+   - Altura adaptativa del logo (70px max-height)
+   - Color de fondo: `#7C1006` (marrón oscuro)
+   - Color de enlaces: `#DCAF7C` (dorado/beige)
+   - Menú colapsable en móviles con icono hamburguesa
+   - Clase personalizada: `rustic-nav`
+   - Efectos hover en enlaces de navegación
+
+2. **Carrusel Bootstrap con Imágenes Reales del Negocio:**
+   - `galletachips1.jpeg` - Galletas chips de chocolate
+   - `besitosdulcedeleche1.jpeg` - Besitos de dulce de leche
+   - `galletaqueso1.jpeg` - Galletas de queso
+   - `galletasconsemillasdemacadamia.jpeg` - Galletas con macadamia
+   - Altura fija: 400px en desktop, 250px en móvil
+   - Transiciones automáticas cada 5 segundos
+   - Controles prev/next visibles
+
+3. **Video Decorativo:**
+   - `videogalletaschips.mp4` en loop
+   - Sin controles ni sonido
+   - Integrado en `acerca-de.html`
+
+3. **Footer Completo con Información del Autor:**
+   - Nombre completo: Manuel Alejandro Soto Rojas
+   - Cédula: 116620142
+   - Correo: msotor@est.utn.ac.cr
+   - **Enlaces a redes sociales:**
+     - Instagram: https://www.instagram.com/latosteleriacr
+     - WhatsApp: +506 8807 4461
+   - Derechos de autor © 2025
+   - Diseño consistente en las 4 páginas
+
+---
+
+## 📋 Requerimientos Cumplidos
+
+### ✅ **Generales:**
+- [x] HTML5, CSS3, JavaScript, jQuery
+- [x] Bootstrap 5 Framework
+- [x] Diseño Mobile-First
+- [x] Hojas de estilo externas
+- [x] Navegación bidireccional
+
+### ✅ **Home:**
+- [x] Navbar responsivo con efectos hover
+- [x] Carrusel Bootstrap con 4 slides
+- [x] Sección de bienvenida
+- [x] Google Maps integrado
+- [x] Footer con redes sociales y autor
+
+### ✅ **Contenido:**
+- [x] Página de historia (`acerca-de.html`)
+- [x] Galería con consumo de JSON (`galeria.html`)
+- [x] Formulario con validaciones completas (`contacto.html`)
+- [x] Video HTML5 decorativo (`acerca-de.html`)
+- [x] JavaScript puro en 3+ páginas (validaciones.js, mapa.js, script.js)
+- [x] jQuery para manipulación DOM y consumo de JSON
+- [x] Consumo de JSON local como API REST
+- [x] Google Maps con geolocalización y cálculo de rutas
+- [x] Detección de dispositivo (móvil/desktop)
+- [x] Favicon en todas las páginas
+- [x] Información completa del autor en todos los footers
+
+---
+
+## 🚀 Instrucciones de Uso
+
+### **Visualización Local:**
+```powershell
+# Opción 1: Abrir directamente (funciona para páginas estáticas)
+start index.html
+
+# Opción 2: Servidor local (RECOMENDADO para AJAX/JSON)
+# Con Python 3:
+python -m http.server 8080
+# Luego abrir: http://localhost:8080
+
+# Con Node.js (si tienes instalado):
+npx http-server -p 8080
+```
+
+### **Configuración de Google Maps:**
+- **API Key actual configurada:** `AIzaSyDIIxIdUvWjqSsIXYBr_Zl4S3PpDf9ohXE`
+- Si necesitas tu propia API Key:
+  1. Crear proyecto en: https://console.cloud.google.com/
+  2. Habilitar "Maps JavaScript API" y "Directions API"
+  3. Crear credenciales → API Key
+  4. Reemplazar en `index.html` línea con el script de Maps
+
+### **Publicación en Internet:**
+
+#### **Opción 1: GitHub Pages (Recomendada)**
+```powershell
+# 1. Inicializar repositorio
+git init
+git add .
+git commit -m "Proyecto La Tostelería completo"
+
+# 2. Crear repositorio en GitHub (ya existe: Alejos96/la-tosteleria)
+git branch -M main
+git remote add origin https://github.com/Alejos96/la-tosteleria.git
+git push -u origin main
+
+# 3. Activar GitHub Pages:
+# - Ir a Settings → Pages
+# - Source: Deploy from branch
+# - Branch: main, folder: / (root)
+# - Save
+# - URL pública: https://alejos96.github.io/la-tosteleria/
+```
+
+#### **Opción 2: Netlify (Drag & Drop)**
+1. Ir a https://app.netlify.com/drop
+2. Arrastrar la carpeta del proyecto
+3. URL automática generada
+
+#### **Opción 3: Vercel**
+```powershell
+npm install -g vercel
+vercel --prod
+```
+
+#### **Opción 4: InfinityFree (Hosting tradicional)**
+1. Crear cuenta en https://infinityfree.net
+2. Subir archivos vía FTP o File Manager
+3. Dominio gratuito .rf.gd disponible
+
+---
+
+## 📦 Dependencias Externas (CDN)
+
+- **Bootstrap 5.3.2:** CSS y JS
+- **jQuery 3.7.0:** Manipulación DOM
+- **Google Fonts:** Playfair Display + Open Sans
+- **Google Maps JavaScript API:** Geolocalización
+
+---
+
+## 🔍 Notas Adicionales
+
+- El sitio es 100% responsivo y funcional sin servidor backend
+- Compatible con navegadores modernos (Chrome, Firefox, Safari, Edge)
+- Validaciones client-side (no requiere backend para funcionar)
+- **Favicon** implementado: `favicon.ico` en todas las páginas
+- **Geolocalización** requiere HTTPS en producción (funciona en localhost)
+- **JSON local** simulando consumo de API REST
+- Imágenes optimizadas en formato JPEG
+- Video en formato MP4 (H.264) para máxima compatibilidad
+
+---
+
+## 📊 Cumplimiento de Requisitos del Proyecto
+
+### **Requisitos Obligatorios Cumplidos:**
+
+| Requisito | Estado | Ubicación |
+|-----------|--------|-----------|
+| Página Home con navegación | ✅ | `index.html` |
+| Historia/datos del servicio | ✅ | `acerca-de.html` |
+| Galería de imágenes | ✅ | `galeria.html` + `productos.json` |
+| Página de contacto | ✅ | `contacto.html` |
+| Página "Acerca del sitio" | ✅ | `acerca-de.html` |
+| Geolocalización Google Maps | ✅ | `index.html` + `mapa.js` |
+| Multimedia HTML5 (video) | ✅ | `acerca-de.html` |
+| Bootstrap responsivo | ✅ | Todas las páginas |
+| Mobile First | ✅ | `styles.css` |
+| Hojas de estilo externas | ✅ | `css/styles.css` |
+| Carrusel Bootstrap | ✅ | `index.html` |
+| Redes sociales | ✅ | Footers con Instagram/WhatsApp |
+| Formulario completo | ✅ | `contacto.html` con todos los campos |
+| Cálculo de edad | ✅ | `validaciones.js` línea 72-81 |
+| JavaScript en 3+ páginas | ✅ | `validaciones.js`, `mapa.js`, `script.js` |
+| jQuery manipulación DOM | ✅ | `script.js` línea 6-50 |
+| Consumo de JSON | ✅ | `productos.json` cargado en `galeria.html` |
+| Info del autor | ✅ | Footer en todas las páginas |
+| Documentación técnica | ✅ | Este README.md |
+
+### **Funcionalidades Adicionales Implementadas:**
+
+- ✅ Cálculo de rutas con DirectionsService/DirectionsRenderer
+- ✅ Detección de dispositivo móvil/desktop
+- ✅ Apertura de navegación nativa en móviles
+- ✅ Campo de edad visible en tiempo real
+- ✅ Rango de ingreso con etiquetas textuales dinámicas
+- ✅ Campo de mensaje personal en formulario
+- ✅ Favicon personalizado
+- ✅ Navbar personalizado con colores de marca
+
+---
+
+## 🎯 Tecnologías y Herramientas Utilizadas
+
+| Tecnología | Versión | Propósito |
+|------------|---------|-----------|
+| HTML5 | - | Estructura semántica |
+| CSS3 | - | Estilos y diseño responsivo |
+| JavaScript (ES6+) | - | Lógica y validaciones |
+| jQuery | 3.7.0 | Manipulación DOM y AJAX |
+| Bootstrap | 5.3.2 | Framework CSS responsivo |
+| Google Maps API | v3 | Geolocalización y routing |
+| Google Fonts | - | Tipografía (Playfair + Open Sans) |
+
+---
+
+## 📝 Lista de Archivos del Proyecto
+
+```
+la-tosteleria/
+│
+├── index.html              (133 líneas) - Página principal
+├── galeria.html            (65 líneas)  - Galería de productos
+├── contacto.html           (136 líneas) - Formulario de contacto
+├── acerca-de.html          (87 líneas)  - Historia del negocio
+│
+├── css/
+│   └── styles.css          (150+ líneas) - Estilos personalizados
+│
+├── js/
+│   ├── script.js           (50 líneas)   - jQuery galería
+│   ├── mapa.js             (72 líneas)   - Google Maps
+│   └── validaciones.js     (81 líneas)   - Validaciones formulario
+│
+├── assets/
+│   ├── img/
+│   │   ├── favicon.ico                    - Icono del sitio
+│   │   ├── LogoLaTosteleria.jpeg          - Logo principal
+│   │   ├── galletachips1.jpeg             - Producto 1
+│   │   ├── besitosdulcedeleche1.jpeg      - Producto 2
+│   │   ├── besitosdulcedeleche2.jpeg      - Producto 3
+│   │   ├── galletaqueso1.jpeg             - Producto 4
+│   │   ├── galletaqueso2.jpeg             - Producto 5
+│   │   ├── galletasconsemillasdemacadamia.jpeg - Producto 6
+│   │   └── suspiros.jpg                   - Producto 7
+│   │
+│   ├── videos/
+│   │   └── videogalletaschips.mp4         - Video decorativo
+│   │
+│   └── data/
+│       └── productos.json                 - Datos de productos
+│
+└── README.md               (Este archivo) - Documentación técnica
+```
+
+---
+
+## 🚀 Próximos Pasos (Opcional - Mejoras Futuras)
+
+1. **Agregar API REST externa** (ej: clima, noticias)
+2. **Implementar backend** para envío real de formularios
+3. **Base de datos** para almacenar productos dinámicamente
+4. **Sistema de autenticación** para administrar contenido
+5. **Carrito de compras** para e-commerce
+6. **Integración con pasarela de pagos**
+7. **Panel de administración** para gestión de contenido
+8. **Optimización SEO** avanzada
+9. **PWA** (Progressive Web App) con service workers
+10. **Analytics** (Google Analytics) para métricas de visitas
+
+---
+
+**Proyecto desarrollado para el curso ISW-512 - Diseño de Aplicaciones Web**  
+**Universidad Técnica Nacional (UTN)**  
+**Diciembre 2025**  
+
+---
+
+## 📞 Contacto
+
+**Manuel Alejandro Soto Rojas**  
+- 📧 Email: msotor@est.utn.ac.cr  
+- 🆔 Cédula: 116620142  
+- 📱 WhatsApp: +506 8807 4461  
+- 📷 Instagram: [@latosteleriacr](https://www.instagram.com/latosteleriacr)  
+- 🌐 GitHub: [Alejos96/la-tosteleria](https://github.com/Alejos96/la-tosteleria)
