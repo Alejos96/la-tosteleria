@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacto - La Tostelería</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
@@ -48,8 +49,14 @@
       <input type="hidden" id="edad" name="edad">
 
       <div class="mb-3">
-        <label for="ingreso" class="form-label">Rango de ingreso</label>
-        <input type="range" class="form-range" id="ingreso" min="0" max="10000" step="100">
+        <label for="edadVisible" class="form-label">Edad calculada</label>
+        <input type="number" class="form-control" id="edadVisible" readonly disabled>
+      </div>
+
+      <div class="mb-3">
+        <label for="rangoIngreso" class="form-label">Rango de Ingreso: <span id="rangoIngresoValor" class="fw-bold">Medio</span></label>
+        <input type="range" class="form-range" id="rangoIngreso" name="rangoIngreso" min="1" max="5" step="1" value="3">
+        <small class="form-text text-muted">Selecciona tu nivel de ingreso.</small>
       </div>
 
       <fieldset class="mb-3">
@@ -85,6 +92,12 @@
       </fieldset>
 
       <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <div class="form-text">Cuéntanos cómo podemos ayudarte.</div>
+      </div>
+
+      <div class="mb-3">
         <button type="submit" class="btn btn-rustic">Enviar</button>
       </div>
 
@@ -99,8 +112,12 @@
           <h6>La Tostelería</h6>
           <p class="small mb-0">&copy; 2025 Todos los derechos reservados.</p>
         </div>
-        <div class="col-md-4 mb-3 mb-md-0 text-center">
-          <a href="index.html" class="btn btn-sm btn-outline-light">Volver al Inicio</a>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h6>Síguenos</h6>
+          <div class="social-links">
+          <a href="https://www.instagram.com/latosteleriacr?igsh=MWRmamQyeDB5MnY4aQ==" target="_blank" class="text-beige me-3">Instagram</a>
+          <a href="https://wa.me/50688074461" target="_blank" class="text-beige">WhatsApp</a>
+        </div>
         </div>
         <div class="col-md-4">
           <h6>Desarrollado por</h6>

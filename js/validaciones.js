@@ -5,11 +5,23 @@ document.addEventListener('DOMContentLoaded', function(){
   const form = document.getElementById('contactForm');
   const nacimiento = document.getElementById('nacimiento');
   const edadInput = document.getElementById('edad');
+  const edadVisible = document.getElementById('edadVisible');
   const messages = document.getElementById('formMessages');
+  const rangoIngreso = document.getElementById('rangoIngreso');
+  const rangoIngresoValor = document.getElementById('rangoIngresoValor');
+
+  // Update range value display with text labels
+  const rangoLabels = ['', 'Bajo', 'Medio Bajo', 'Medio', 'Medio Alto', 'Alto'];
+  if(rangoIngreso && rangoIngresoValor){
+    rangoIngreso.addEventListener('input', function(){
+      rangoIngresoValor.textContent = rangoLabels[this.value];
+    });
+  }
 
   nacimiento.addEventListener('change', function(){
     const edad = calcularEdad(this.value);
     edadInput.value = edad;
+    if(edadVisible){ edadVisible.value = edad; }
   });
 
   form.addEventListener('submit', function(e){
@@ -46,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
     messages.innerHTML = '<div class="alert alert-success">Formulario enviado. Gracias.</div>';
     form.reset();
     edadInput.value = '';
+    if(edadVisible){ edadVisible.value = ''; }
   });
 });
 

@@ -8,37 +8,30 @@
   },
   {
     "id": 2,
-    "nombre": "Suspiros con coco",
-    "descripcion": "Producto seco elaborado a base de clara de huevo, azúcar y coco deshidratado. Producto crujiente, ligero y con sabor a coco.",
-    "imagen": "assets/img/suspiros-coco.jpg",
-    "precio": "₡1000"
-  },
-  {
-    "id": 3,
     "nombre": "Galletas con chips de chocolate",
     "descripcion": "Galleta horneada elaborada con harinas de trigo e integral, avena y chips de chocolate. Producto de textura firme y sabor dulce.",
     "imagen": "assets/img/galletachips1.jpeg",
     "precio": "₡950"
   },
   {
-    "id": 4,
+    "id": 3,
     "nombre": "Galletas con semillas de macadamia",
     "descripcion": "Galleta horneada elaborada con harinas enriquecidas, avena y semillas de macadamia, con cobertura sabor a chocolate blanco. Producto con sabor dulce y notas cremosas.",
     "imagen": "assets/img/galletasconsemillasdemacadamia.jpeg",
     "precio": "₡1450"
   },
   {
-    "id": 5,
+    "id": 4,
     "nombre": "Galletas con queso",
     "descripcion": "Galleta horneada de harinas enriquecidas e integral, margarina y queso semiduro. Producto de sabor salado y fuente moderada de proteína. Elaborado sin azúcares añadidos.",
     "imagen": "assets/img/galletaqueso1.jpeg",
     "precio": "₡870"
   },
   {
-    "id": 6,
+    "id": 5,
     "nombre": "Besitos de dulce de leche",
-    "descripcion": "Descripcion de los besitos",
+    "descripcion": "Galleta con dulce de leche cubierta de chocolate y confitura. Producto de textura suave y sabor dulce.",
     "imagen": "assets/img/besitosdulcedeleche1.jpeg",
-    "precio": "₡870"
+    "precio": "₡1000"
   }
 ]
