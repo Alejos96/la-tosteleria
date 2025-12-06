@@ -22,7 +22,7 @@
 - **Mapa y rutas (Google Maps):** `js/mapa.js` con DirectionsService/Renderer; botón "Cómo llegar" calcula ruta desde geolocalización; botón "Ir" abre app nativa (móvil) o Maps web (desktop).
 - **Galería dinámica:** `galeria.html` carga `assets/data/productos.json` vía jQuery (`js/script.js`) y genera cards Bootstrap.
 - **Formulario de contacto:** `contacto.html` + `js/validaciones.js`: valida email, nombre, fecha; calcula edad (visible y oculta); rango de ingreso 1-5 con etiquetas; género (radio), grado académico (checkbox), mensaje libre.
-- **Audio ambiental:** Botón flotante en todas las páginas; `js/audio-control.js` controla play/pause, volumen 30%, guarda preferencia en localStorage (requiere `assets/audio/chimenea-ambiente.mp3`).
+- **Audio ambiental:** Botón flotante en todas las páginas; `js/audio-control.js` controla play/pause, volumen 30%, guarda preferencia en localStorage.
 - **Navbar y footer unificados:** Logo, links, clima, redes (Instagram, WhatsApp) y datos del autor.
 - **Comentarios en español:** HTML, CSS y JS documentados de forma breve.
 
