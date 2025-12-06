@@ -1,5 +1,5 @@
 // validaciones.js
-// Form validations for contacto.html
+// Validaciones del formulario de contacto
 
 document.addEventListener('DOMContentLoaded', function(){
   const form = document.getElementById('contactForm');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const rangoIngreso = document.getElementById('rangoIngreso');
   const rangoIngresoValor = document.getElementById('rangoIngresoValor');
 
-  // Update range value display with text labels
+  // Actualizar la etiqueta visible del rango de ingreso
   const rangoLabels = ['', 'Bajo', 'Medio Bajo', 'Medio', 'Medio Alto', 'Alto'];
   if(rangoIngreso && rangoIngresoValor){
     rangoIngreso.addEventListener('input', function(){
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     messages.innerHTML = '';
 
-    // Basic validation
+    // Validación básica de campos obligatorios
     let valid = true;
 
     const email = document.getElementById('email');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
       return;
     }
 
-    // If valid, simulate submit
+    // Si todo es válido, mostrar éxito y limpiar
     messages.innerHTML = '<div class="alert alert-success">Formulario enviado. Gracias.</div>';
     form.reset();
     edadInput.value = '';

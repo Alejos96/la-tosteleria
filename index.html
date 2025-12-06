@@ -14,6 +14,7 @@
 </head>
 <body>
 <header>
+  <!-- Barra de navegación principal -->
   <nav class="navbar navbar-expand-lg navbar-dark rustic-nav py-2">
     <div class="container">
       <a class="navbar-brand" href="index.html"><img src="assets/img/LogoLaTosteleria.jpeg" alt="La Tostelería"></a>
@@ -26,6 +27,9 @@
           <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
           <li class="nav-item"><a class="nav-link" href="acerca-de.html">Acerca de</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item d-flex align-items-center ms-lg-3">
+            <span id="weatherBadge" class="badge bg-transparent border border-light text-beige small">Cargando…</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -33,6 +37,7 @@
 </header>
 
 <main>
+  <!-- Hero con carrusel y bienvenida -->
   <section class="hero container mt-4">
     <!-- Bootstrap carousel -->
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -99,6 +104,7 @@
   </section>
 </main>
 
+<!-- Pie de página con redes y autor -->
 <footer class="bg-dark text-beige py-4">
   <div class="container">
     <div class="row">
@@ -139,6 +145,7 @@
 <script src="js/script.js"></script>
 <script src="js/mapa.js"></script>
 <script src="js/audio-control.js"></script>
+<script src="js/weather.js"></script>
 <!-- Google Maps API: replace YOUR_API_KEY with a real key -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&callback=initMap"></script>
 </body>

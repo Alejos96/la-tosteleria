@@ -1,16 +1,16 @@
-// Global script for La Tostelería
-// - Navigation hover effects
-// - Load products.json and render gallery (used in galeria.html)
+// Script global para La Tostelería
+// - Efecto hover en la navegación
+// - Carga productos desde productos.json y pinta la galería (galeria.html)
 
 $(document).ready(function(){
-  // Nav hover subtle effect handled by CSS; here add small JS enhancement
+  // Pequeño realce al hover de los links
   $('.nav-link').hover(function(){
     $(this).addClass('shadow-sm');
   }, function(){
     $(this).removeClass('shadow-sm');
   });
 
-  // If on gallery page, load products
+  // Si estamos en la galería, cargar productos
   if($('#gallery').length){
     loadProducts();
   }

@@ -6,6 +6,7 @@ var directionsRenderer;
 var destinationLatLng = { lat: 10.027863216519693, lng: -84.20398087273193 };
 
 function initMap(){
+  // Configura el mapa centrado en la ubicación del negocio
   map = new google.maps.Map(document.getElementById('map'), {
     center: destinationLatLng,
     zoom: 15,
@@ -17,12 +18,14 @@ function initMap(){
   directionsRenderer = new google.maps.DirectionsRenderer();
   directionsRenderer.setMap(map);
 
+  // Marcador del negocio
   var marker = new google.maps.Marker({
     position: destinationLatLng,
     map: map,
     title: 'La Tostelería'
   });
 
+  // Texto emergente con datos básicos
   var info = new google.maps.InfoWindow({
     content: '<strong>La Tostelería</strong><br>Panadería tradicional'
   });
@@ -35,6 +38,7 @@ function initMap(){
 var userCurrentLocation = null;
 
 function calcularRuta(){
+  // Solicita geolocalización y traza la ruta en el mapa
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       userCurrentLocation = {
@@ -65,6 +69,7 @@ function calcularRuta(){
 }
 
 function iniciarNavegacion(){
+  // Abre Google Maps con navegación desde la ubicación actual
   if(!userCurrentLocation) return;
   
   var destLat = destinationLatLng.lat;
@@ -76,11 +81,11 @@ function iniciarNavegacion(){
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   
   if(isMobile){
-    // Para dispositivos móviles, usar el esquema universal que abre la app nativa
+    // En móvil, abre la app nativa de mapas
     var url = `https://www.google.com/maps/dir/?api=1&origin=${originLat},${originLng}&destination=${destLat},${destLng}&travelmode=driving`;
     window.open(url, '_blank');
   } else {
-    // Para desktop, abrir Google Maps en nueva pestaña
+    // En desktop, abre Google Maps en nueva pestaña
     var url = `https://www.google.com/maps/dir/?api=1&origin=${originLat},${originLng}&destination=${destLat},${destLng}&travelmode=driving`;
     window.open(url, '_blank');
   }

@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', function(){
   if(audioActivado){
     audio.play().catch(err => {
       console.log('Autoplay bloqueado por el navegador:', err);
-      // Si el autoplay falla, mantener el icono en mudo
+      // Si el autoplay falla, mantener el ícono en mudo
       audioIcon.textContent = '🔇';
     });
     audioIcon.textContent = '🔊';
   }
   
-  // Toggle audio on/off
+  // Alternar audio encendido/apagado
   toggleBtn.addEventListener('click', function(){
     if(audio.paused){
       audio.play();
